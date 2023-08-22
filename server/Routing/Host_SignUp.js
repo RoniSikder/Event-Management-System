@@ -1,6 +1,7 @@
 const express = require('express')
 const route = express.Router()
 const bcrypt = require("bcrypt")
+const jwt = require('jsonwebtoken')
 
 const HostOtp = require('../Database System/Models/Host_OTP_Model')
 const Host = require('../Database System/Models/Host_Model')
@@ -27,10 +28,30 @@ route.post('/signup', async (request, response) => {
                     .then(async () => {
                         const reset = await HostOtp.updateOne({ _id: data._id }, { $set: { used: true } })
                         if (reset) {
-                            response.send({
-                                massage: "OTP update successfull and Host Profile Created Successfull",
-                                id: data._id
-                            })
+                            const token = await jwt.sign(
+                                {
+                                    uid: data._id,
+                                    email: data.email,
+                                    password: data.password
+                                },
+                                process.env.Host_Token_Secret,
+                                {
+                                    expiresIn: "24h"
+                                }
+                            )
+                            if(token){
+                                response.send({
+                                    massage: "OTP update successfull and Host Profile Created Successfull",
+                                    id: data._id,
+                                    token
+                                })
+                            }
+                            else{
+                                response.send({
+                                    massage:"Failed to Genarate JSON-Web-Token"
+                                })
+                            }
+
                         }
                         else {
                             response.send({

@@ -4,11 +4,11 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv')
 
-const Host_Model = require('../Database System/Models/Host_Model')
+const Participate = require('../Database System/Models/Participate_Model')
 
 route.post('/login', async (request, response) => {
     const { email, password } = request.body
-    const data = await Host_Model.findOne({ email: email })
+    const data = await Participate.findOne({ email: email })
     if (data) {
         const check = await bcrypt.compare(password,data.password)
         if (check) {
@@ -18,13 +18,14 @@ route.post('/login', async (request, response) => {
                     email: data.email,
                     password: data.password
                 },
-                process.env.Host_Token_Secret,
+                process.env.Particiapate_Token_Secert,
                 {
                     expiresIn: "24h"
                 }
             )
             if (token) {
                 response.send("Email and Password combination and Token Genaration Successfull "+token)
+                
             }
             else {
                 response.send("Sorry for Interuption and Tokenization Failed")

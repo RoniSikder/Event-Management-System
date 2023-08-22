@@ -1,6 +1,7 @@
 const express = require('express')
 const route = express.Router()
 const bcrypt = require("bcrypt")
+const jwt = require('jsonwebtoken')
 
 const Participate_Otp = require('../Database System/Models/Participate_OTP_Model')
 const Participate = require('../Database System/Models/Participate_Model')
@@ -27,10 +28,31 @@ route.post('/signup', async (request, response) => {
                     .then(async () => {
                         const reset = await Participate_Otp.updateOne({ _id: data._id }, { $set: { used: true } })
                         if (reset) {
-                            response.send({
-                                massage: "OTP update successfull and Participate Profile Created Successfull",
-                                id: data._id
-                            })
+                            const token = await jwt.sign(
+                                {
+                                    uid: data._id,
+                                    email: data.email,
+                                    password: data.password
+                                },
+                                process.env.Particiapate_Token_Secert,
+                                {
+                                    expiresIn: "24h"
+                                }
+                            )
+                            if (token) {
+                                response.send({
+                                    massage: "OTP update successfull and Participate Profile Created Successfull",
+                                    id: data._id,
+                                    token
+                                })
+                            }
+                            else {
+                                response.send({
+                                    massage: "Token Genaretion Failed"
+                                })
+                            }
+
+
                         }
                         else {
                             response.send({

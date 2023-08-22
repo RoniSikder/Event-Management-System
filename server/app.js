@@ -6,6 +6,7 @@ const Host_SignUp = require('./Routing/Host_SignUp')
 const Host_LogIn = require('./Routing/Host_LogIn')
 const Participate_OTP = require('./Routing/Participate_OTP')
 const Participate_SignUp = require('./Routing/Participate_SignUp')
+const Participate_Login = require('./Routing/Participate_LogIn')
 
 
 const app = express()
@@ -18,6 +19,7 @@ app.use('/host/',Host_SignUp)
 app.use('/host/',Host_LogIn)
 app.use('/participate/',Participate_OTP)
 app.use('/participate/',Participate_SignUp)
+app.use('/participate/',Participate_Login)
 
 app.get('/',(request,response)=>{
     response.send("Hello Buddy");
