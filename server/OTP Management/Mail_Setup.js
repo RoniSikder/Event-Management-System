@@ -17,7 +17,10 @@ async function Email_Sender(email, otp) {
       text: `Your OTP is ${otp}`
     };
     let response = await transporter.sendMail(mailOptions)
-    return response.response;
+    if (response){
+      console.log("email send successfull")
+      return response.response;
+    }
   }
   catch (error) {
     return error;

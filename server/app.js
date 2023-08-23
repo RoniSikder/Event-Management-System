@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors');
 const database = require('./Database System/Connection')
 
 const Host_OTP = require('./Routing/Host_OTP')
@@ -10,6 +11,7 @@ const Participate_Login = require('./Routing/Participate_LogIn')
 
 
 const app = express()
+app.use(cors());
 app.use(express.json())
 
 database()

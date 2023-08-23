@@ -485,3 +485,10 @@ body::-webkit-scrollbar {
 [data-selection-head]{
     margin: 20px 6vw;
 }
+
+[data-password-mismatch="true"]>input{
+    border: 2px solid red;
+}
+[data-password-mismatch="false"]>input{
+    border: 2px solid black;
+}
