@@ -54,7 +54,7 @@ const Per_Signup = () => {
             otp: otp.current.value
         })
             .then((response) => {
-                console.log(response)
+                sessionStorage.setItem(response.data.token)
             })
             .catch((error) => {
                 console.log(error)

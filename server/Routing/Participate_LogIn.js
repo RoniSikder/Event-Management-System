@@ -10,7 +10,7 @@ route.post('/login', async (request, response) => {
     const { email, password } = request.body
     const data = await Participate.findOne({ email: email })
     if (data) {
-        const check = await bcrypt.compare(password,data.password)
+        const check = await bcrypt.compare(password, data.password)
         if (check) {
             const token = await jwt.sign(
                 {
@@ -24,18 +24,23 @@ route.post('/login', async (request, response) => {
                 }
             )
             if (token) {
-                response.send("Email and Password combination and Token Genaration Successfull "+token)
-                
+                response.send(
+                    {
+                        massage: "Email and Password combination and Token Genaration Successfull",
+                        token:token
+                    }
+                )
+
             }
             else {
                 response.send("Sorry for Interuption and Tokenization Failed")
             }
         }
-        else{
+        else {
             response.send("Email and Password combination is not matched")
         }
     }
-    else{
+    else {
         response.send("Email is not Found in Database")
     }
 })

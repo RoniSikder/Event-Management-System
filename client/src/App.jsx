@@ -1,17 +1,14 @@
-import Authentication from "./Pages/Authentication"
-import Gen_Home from "./Pages/Gen_Home"
-import { Routes, Route } from "react-router-dom"
-import Sub_Routes from "./Sub_Routes"
+import Host_Routes from "./Routes/Host_Routes"
+import Participate_Routes from "./Routes/Participate_Routes"
+import Guest_Routes from "./Routes/Guest_Routes"
 
 function App() {
 
   return (
     <>
-    <Sub_Routes/>
-      <Routes>
-        <Route path='/' element={<Gen_Home />}/>
-        <Route path="/auth" element={<Authentication/>}/>
-      </Routes>
+      <Guest_Routes />
+      <Host_Routes />
+      <Participate_Routes />
     </>
   )
 }

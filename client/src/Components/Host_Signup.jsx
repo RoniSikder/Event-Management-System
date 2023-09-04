@@ -16,6 +16,7 @@ const Host_Signup = () => {
     let [otp_hider, setotp] = useState(false);
     function sender_function(e) {
         e.preventDefault();
+        console.log("here")
         const url = "http://localhost:1000/host/otp"
         const email_sender = email.current.value
         const holder = field_Checker()
@@ -54,7 +55,8 @@ const Host_Signup = () => {
             otp: otp.current.value
         })
             .then((response) => {
-                console.log(response)
+                sessionStorage.setItem('token',response.data.token)
+                navigate('/host/signup2form')
             })
             .catch((error) => {
                 console.log(error)
