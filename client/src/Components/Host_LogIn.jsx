@@ -5,7 +5,7 @@ import axios from 'axios'
 const Host_LogIn = () => {
   const email = useRef()
   const password = useRef()
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   const submit = (e) => {
     const url = 'http://localhost:1000/host/login'
     axios.post(url, {
@@ -13,7 +13,8 @@ const Host_LogIn = () => {
       password: password.current.value,
     })
       .then((res) => {
-        sessionStorage.setItem('User_Token', res.data.token)
+        sessionStorage.setItem('token', res.data.token)
+        navigate('/host/dashboard')
       })
       .catch((error) => {
         console.log(error)

@@ -542,7 +542,8 @@ body::-webkit-scrollbar {
     margin-left: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: center;font-family: 'Montserrat', sans-serif;
+
     align-items: center;
     flex-direction: column;
 }
@@ -550,8 +551,9 @@ body::-webkit-scrollbar {
 [data-dashboard-horizental-navbar]>li{
     text-align: center;
     width: 80%;
-    font-family: 'Tilt Prism', cursive;
-    font-size: 30px;
+    /* font-family: 'Tilt Prism', cursive; */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
     margin: 20px 0;
     cursor: pointer;
 }
@@ -682,6 +684,9 @@ body::-webkit-scrollbar {
 }
 
 [data-last-step]{
+    background-image: url(./Image_Components/feather.png);
+    background-size:  cover;
+    background-repeat: no-repeat;
     display:flex ;
     justify-content: center;
     align-items: center;
@@ -692,7 +697,6 @@ body::-webkit-scrollbar {
 }
 
 [data-last-step]>h1{
-    width: 90%;
     text-align: left;
     margin: 20px 0px;
 }
@@ -749,6 +753,19 @@ body::-webkit-scrollbar {
 
 .custom-file-upload:hover {
     background-color: #0056b3;
+}
+
+[data-image-preview]{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+    height: 30vh;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
 }
 
 #fileInput {

@@ -19,10 +19,9 @@ const Host_Routes = () => {
         <Routes>
             <Route path='/host/login' element={<Host_LogIn />} />
             <Route path='/host/signup' element={<Host_Signup />} />
-            <Route path='/host/signup2form' element={<Category_Event/>}/>
-            {/* <Route path='/host/signup2form' element={<ProtectedRoutes component={Category_Event} />} /> */}
-            <Route path='/host/dashboard' element={<Host_DashBoard dash={dash}/>}/>
-            <Route path='/host/createlaststep' element={<Host_Event_Details setDash={setDash}/>}/>
+            <Route path='/host/signup2form' element={<ProtectedRoutes component={Category_Event} />} />
+            <Route path='/host/dashboard' element={<ProtectedRoutes component={Host_DashBoard} dash={dash}/>}/>
+            <Route path='/host/createlaststep' element={<ProtectedRoutes component={Host_Event_Details} setDash={setDash}/>}/>
         </Routes>
 
     )

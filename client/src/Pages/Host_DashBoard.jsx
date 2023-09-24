@@ -6,7 +6,6 @@ import Host_Event_Manage from '../Components/Host_Event_Manage'
 import Host_Shedule from '../Components/Host_Shedule'
 import Host_Task_Reminder from '../Components/Host_Task_Reminder'
 import Host_Help_Center from '../Components/Host_Help_Center'
-import { useLocation } from 'react-router-dom'
 
 const Host_DashBoard = ({dash}) => {
   let [header, setHeader] = useState(dash.name)

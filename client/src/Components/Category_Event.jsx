@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 const Category_Event = () => {
   let navigate = useNavigate()
   let eventSelect = (value) =>{
-    navigate('/host/createlaststep')
+    navigate('/host/createlaststep',{state :{data:value}})
   }
   return (
     <>
@@ -19,42 +19,42 @@ const Category_Event = () => {
         <p>Choose Your Event Category from below</p>
       </div>
       <div data-selected-card-main>
-        <div onClick={()=>{eventSelect(1)}} data-selection-card>
+        <div onClick={()=>{eventSelect("OutDoor Games")}} data-selection-card>
           <img src={img1} alt="" />
           <div>
           <h4>OutDoor Games</h4>
           <p>Create Tournament</p>
           </div>
         </div>
-        <div onClick={()=>{eventSelect(2)}} data-selection-card>
+        <div onClick={()=>{eventSelect("InDoor Games")}} data-selection-card>
           <img src={img2} alt="" />
           <div>
           <h4>InDoor Game</h4>
           <p>Create Match</p>
           </div>
         </div>
-        <div onClick={()=>{eventSelect(3)}} data-selection-card>
+        <div onClick={()=>{eventSelect("E-Sports")}} data-selection-card>
           <img src={img3} alt="" />
           <div>
           <h4>E-sports Tournament </h4>
           <p>Create Tournament</p>
           </div>
         </div>
-        <div onClick={()=>{eventSelect(4)}} data-selection-card>
+        <div onClick={()=>{eventSelect("Coding Compitition")}} data-selection-card>
           <img src={img4} alt="" />
           <div>
           <h4>Coding Compititions</h4>
           <p>Create Compitition</p>
           </div>
         </div>
-        <div onClick={()=>{eventSelect(5)}} data-selection-card>
+        <div onClick={()=>{eventSelect("Hackathone")}} data-selection-card>
           <img src={img5} alt="" />
           <div>
           <h4>Hackathons</h4>
           <p>Create Tournament</p>
           </div>
         </div>
-        <div onClick={()=>{eventSelect(6)}} data-selection-card>
+        <div onClick={()=>{eventSelect("Quiz")}} data-selection-card>
           <img src={img6} alt="" />
           <div>
           <h4>Quiz Event</h4>
